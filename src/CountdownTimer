@@ -1,0 +1,19 @@
+export default class countdownTimer extends React.Component {
+    
+    constructor(props) {
+        super(props);
+
+    }
+    
+    render() {
+        
+        return (
+                
+                <div className="imageWrapper">
+                    <Photo source={cat1} />
+                    <Photo source={cat2} />
+                </div>
+            
+        )
+    }
+}

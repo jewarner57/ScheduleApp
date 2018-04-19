@@ -1,0 +1,77 @@
+
+/*Fonts*/
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.googleapis.com/css?family=Roboto);
+}
+
+/*Header*/
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+    background-color: #2196f3;
+    color: #fff;    
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    padding: 15px 0 15px 0;
+    box-shadow: 0px 2px #000;
+    width: 100%;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/*Countdown Timer*/
+.tabSection {
+    
+    width:100%;
+    background-color:#303030;
+    color:white;
+    text-align: center;
+    padding: 25px 0 25px 0;
+    border-bottom: 2px solid #ffc107;
+
+}
+
+.tabSection h2 {
+    font-size: 50px;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.tabSection h1 {
+    font-size: 150px;
+    margin-top: 30px;
+    margin-bottom:60px;
+}
+
+@media screen and (min-width: 1200px) {
+  div {
+     /*font-size: 36px;*/
+  }
+}
+
+.amberText {
+    color:#ffd54f;
+}
+
