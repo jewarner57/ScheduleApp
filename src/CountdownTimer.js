@@ -14,20 +14,39 @@ const styles = {
   },
 };
 
-//Regluar Day Block Info
-const regularBlockHighlightedTitleWords = ["", "First ", "", "Second ", "", "Third ", "", "Fourth "]
-const regularBlockRegularTitleWords = ["School Starts In:", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In"]
-const regularBlockScheduleTimes = [745, 916, 925, 1053, 1100, 1300, 1307, 1435];
+//Block Schedules
 
-//Advisory Day Block Info
-const advisoryBlockHighlightedTitleWords = ["", "Advisory ", "", "First ", "", "Second ", "", "Third ", "", "Fourth "]
-const advisoryBlockRegularTitleWords = ["School Starts In:", "Period Ends In:", "Class Change:", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In"]
-const advisoryBlockScheduleTimes = [745, 815, 822, 941, 950, 1110, 1117, 1309, 1316, 1435];
+    //Regluar Day Block Info
+    const regularBlockHighlightedTitleWords = ["", "First ", "", "Second ", "", "Third ", "", "Fourth "]
+    const regularBlockRegularTitleWords = ["School Starts In:", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In"]
+    const regularBlockScheduleTimes = [745, 916, 925, 1053, 1100, 1300, 1307, 1435];
 
-//ELT Day Block Info
-const eltBlockHighlightedTitleWords = ["", "First ","", "ELT ", "", "Second ", "", "Third ", "", "Fourth "]
-const eltBlockRegularTitleWords = ["School Starts In:", "Block Ends In", "", "Period Ends In:", "Class Change", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In"]
-const eltBlockScheduleTimes = [745, 900, 906, 956, 1005, 1117, 1224, 1316, 123, 1435];
+    //Advisory Day Block Info
+    const advisoryBlockHighlightedTitleWords = ["", "Advisory ", "", "First ", "", "Second ", "", "Third ", "", "Fourth "]
+    const advisoryBlockRegularTitleWords = ["School Starts In:", "Period Ends In:", "Class Change:", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In"]
+    const advisoryBlockScheduleTimes = [745, 815, 822, 941, 950, 1110, 1117, 1309, 1316, 1435];
+
+    //ELT Day Block Info
+    const eltBlockHighlightedTitleWords = ["", "First ","", "ELT ", "", "Second ", "", "Third ", "", "Fourth "]
+    const eltBlockRegularTitleWords = ["School Starts In:", "Block Ends In", "", "Period Ends In:", "Class Change", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In"]
+    const eltBlockScheduleTimes = [745, 900, 906, 956, 1005, 1117, 1224, 1316, 123, 1435];
+
+//Lunch Schedule
+
+    //Regluar Day Lunch Info
+    const regularLunchHighlightedTitleWords = ["", "A ", "B ", "C ", "D "]
+    const regularLunchRegularTitleWords = ["Lunches Start In:", "Lunch Ends In", "Lunch Ends In", "Lunch Ends In", "Lunch Ends In"]
+    const regularLunchScheduleTimes = [1100, 1130, 1200, 1230, 1300];
+
+    //Advisory Day Lunch Info
+    const advisoryLunchHighlightedTitleWords = ["", "B ", "", "A ", "", "C ", "", "D "]
+    const advisoryLunchRegularTitleWords = ["Lunches Start In:", "Lunch Ends In", "", "Lunch Ends In", "", "Lunch Ends In", "", "Lunch Ends In"]
+    const advisoryLunchScheduleTimes = [1117, 1141, 1146, 1209, 1213, 1237, 1241, 1309];
+
+    //ELT Day Lunch Info
+    const eltLunchHighlightedTitleWords = ["", "B ", "", "A ", "", "C ", "", "D "]
+    const eltLunchRegularTitleWords = ["Lunches Start In:", "Lunch Ends In", "", "Lunch Ends In", "", "Lunch Ends In", "", "Lunch Ends In"]
+    const eltLunchScheduleTimes = [1117, 1141, 1146, 1209, 1213, 1237, 1241, 1309];
 
 export default class CountdownTimer extends React.Component {
       
@@ -36,21 +55,26 @@ export default class CountdownTimer extends React.Component {
 
         this.state = {
             slideIndex: 0,
-            currentTimeInfo: {
+            blockTimeInfo: {
                 
-                blockTitle: {
+                Title: {
                     highlighted:"",
                     regular:""
                 },
-                blockRemainingHours: "",
-                blockRemainingMinutes: "",
-                blockRemainingSeconds: "",
-                lunchTitle: "",
-                lunchRemainingHours: "",
-                lunchRemainingMinutes: "",
-                lunchRemainingSeconds: ""
-                
-            }
+                remainingHours: "",
+                remainingMinutes: "",
+                remainingSeconds: "",
+            },
+            
+            lunchTimeInfo: {
+                Title: {
+                    highlighted:"",
+                    regular:""
+                },
+                remainingHours: "",
+                remainingMinutes: "",
+                remainingSeconds: "",
+            },
         };
         this.getRemainingBlockTime = this.getRemainingBlockTime.bind(this);
         this.getDaySched = this.getDaySched.bind(this);
@@ -74,12 +98,28 @@ export default class CountdownTimer extends React.Component {
             dayInfo[0] = advisoryBlockScheduleTimes;
             dayInfo[1] = advisoryBlockRegularTitleWords;
             dayInfo[2] = advisoryBlockHighlightedTitleWords;
+            
+            dayInfo[3] = advisoryLunchScheduleTimes;
+            dayInfo[4] = advisoryLunchRegularTitleWords;
+            dayInfo[5] = advisoryLunchHighlightedTitleWords;
         }
         else if(today === 2 || today === 5) {
             dayInfo[0] = regularBlockScheduleTimes;
+            dayInfo[1] = regularBlockRegularTitleWords;
+            dayInfo[2] = regularBlockHighlightedTitleWords;
+            
+            dayInfo[3] = advisoryLunchScheduleTimes;
+            dayInfo[4] = advisoryLunchRegularTitleWords;
+            dayInfo[5] = advisoryLunchHighlightedTitleWords;
         }
         else if(today === 3) {
             dayInfo[0] = eltBlockScheduleTimes;
+            dayInfo[1] = eltBlockRegularTitleWords;
+            dayInfo[2] = eltBlockHighlightedTitleWords;
+            
+            dayInfo[3] = advisoryLunchScheduleTimes;
+            dayInfo[4] = advisoryLunchRegularTitleWords;
+            dayInfo[5] = advisoryLunchHighlightedTitleWords;
         }
         else {
             dayInfo[0] = "weekend"; 
@@ -92,7 +132,7 @@ export default class CountdownTimer extends React.Component {
         
         const date = new Date();
         const today = date.getDay();
-        let timeInfo = this.state.currentTimeInfo;
+        let timeInfo = this.state.blockTimeInfo;
         let hours = date.getHours();
         let minutes = date.getMinutes();
         let seconds = date.getSeconds()
@@ -103,51 +143,103 @@ export default class CountdownTimer extends React.Component {
         
         
         if(todaySched === "weekend" || hours*100+minutes > 1435) {
-            timeInfo.blockRemainingHours = "Classes";
-            timeInfo.blockRemainingMinutes = " Are";
-            timeInfo.blockRemainingSeconds = " Over.";
+            timeInfo.remainingHours = "Classes";
+            timeInfo.remainingMinutes = " Are";
+            timeInfo.remainingSeconds = " Over.";
         }
         else {
             for(let i = 0; i < todaySched.length; i++) {
 
                 if(hours*100+minutes < todaySched[i]) {
                     
-                    timeInfo.blockRemainingHours= ((todaySched[i]-todaySched[i]%100-hours*100)/100);
-                    timeInfo.blockRemainingMinutes = (todaySched[i]%100-minutes);
-                    timeInfo.blockRemainingSeconds = 59-seconds;
+                    timeInfo.remainingHours= ((todaySched[i]-todaySched[i]%100-hours*100)/100);
+                    timeInfo.remainingMinutes = (todaySched[i]%100-minutes);
+                    timeInfo.remainingSeconds = 59-seconds;
                     
-                    if(timeInfo.blockRemainingMinutes > 60) {
-                        timeInfo.blockRemainingMinutes -= 60;
-                        timeInfo.blockRemainingHours += 1;
+                    if(timeInfo.remainingMinutes > 60) {
+                        timeInfo.remainingMinutes -= 60;
+                        timeInfo.remainingHours += 1;
                     }
-                    else if(timeInfo.blockRemainingMinutes < 0) {
-                        timeInfo.blockRemainingMinutes = 60-Math.abs(timeInfo.blockRemainingMinutes);
-                        timeInfo.blockRemainingHours -= 1;
+                    else if(timeInfo.remainingMinutes < 0) {
+                        timeInfo.remainingMinutes = 60-Math.abs(timeInfo.remainingMinutes);
+                        timeInfo.remainingHours -= 1;
                     }
                     
-                    if(timeInfo.blockRemainingSeconds < 10) {
-                        timeInfo.blockRemainingSeconds = ":0" + timeInfo.blockRemainingSeconds; 
+                    if(timeInfo.remainingSeconds < 10) {
+                        timeInfo.remainingSeconds = ":0" + timeInfo.remainingSeconds; 
                     }
                     else {
-                        timeInfo.blockRemainingSeconds = ":" + timeInfo.blockRemainingSeconds; 
+                        timeInfo.remainingSeconds = ":" + timeInfo.remainingSeconds; 
                     }
                     
-                    if(timeInfo.blockRemainingMinutes < 10) {
-                        timeInfo.blockRemainingMinutes = ":0" + timeInfo.blockRemainingMinutes; 
+                    if(timeInfo.remainingMinutes < 10) {
+                        timeInfo.remainingMinutes = ":0" + timeInfo.remainingMinutes; 
                     }
                     else { 
-                        timeInfo.blockRemainingMinutes = ":" + timeInfo.blockRemainingMinutes; 
-                    }
+                        timeInfo.remainingMinutes = ":" + timeInfo.remainingMinutes; 
+                    }            
                     
-                    timeInfo.blockTitle.regular = todayNames[i];
-                    timeInfo.blockTitle.highlighted = todayNamesHighlighted[i];
+                    timeInfo.Title.regular = todayNames[i];
+                    timeInfo.Title.highlighted = todayNamesHighlighted[i];
                     
                     
                     i = todaySched.length;
                 }
             }
         }
-        this.setState({currentTimeInfo: timeInfo}); 
+        
+        let lunchTimeInfo = this.state.lunchTimeInfo;
+        todaySched = dayInfo[3];
+        todayNames = dayInfo[4];
+        todayNamesHighlighted = dayInfo[5];
+        
+        if(todaySched === "weekend" || hours*100+minutes > todaySched[todaySched.length-1]) {
+            lunchTimeInfo.remainingHours = "Lunches";
+            lunchTimeInfo.remainingMinutes = " Are";
+            lunchTimeInfo.remainingSeconds = " Over.";
+        }
+        else {
+            for(let i = 0; i < todaySched.length; i++) {
+
+                if(hours*100+minutes < todaySched[i]) {
+                    
+                    lunchTimeInfo.remainingHours= ((todaySched[i]-todaySched[i]%100-hours*100)/100);
+                    lunchTimeInfo.remainingMinutes = (todaySched[i]%100-minutes);
+                    lunchTimeInfo.remainingSeconds = 59-seconds;
+                    
+                    if(lunchTimeInfo.remainingMinutes > 60) {
+                        lunchTimeInfo.remainingMinutes -= 60;
+                        lunchTimeInfo.remainingHours += 1;
+                    }
+                    else if(lunchTimeInfo.remainingMinutes < 0) {
+                        lunchTimeInfo.remainingMinutes = 60-Math.abs(lunchTimeInfo.remainingMinutes);
+                        lunchTimeInfo.remainingHours -= 1;
+                    }
+                    
+                    if(lunchTimeInfo.remainingSeconds < 10) {
+                        lunchTimeInfo.remainingSeconds = ":0" + lunchTimeInfo.remainingSeconds; 
+                    }
+                    else {
+                        lunchTimeInfo.remainingSeconds = ":" + lunchTimeInfo.remainingSeconds; 
+                    }
+                    
+                    if(lunchTimeInfo.remainingMinutes < 10) {
+                        lunchTimeInfo.remainingMinutes = ":0" + lunchTimeInfo.remainingMinutes; 
+                    }
+                    else { 
+                        lunchTimeInfo.remainingMinutes = ":" + lunchTimeInfo.remainingMinutes; 
+                    }            
+                    
+                    lunchTimeInfo.Title.regular = todayNames[i];
+                    lunchTimeInfo.Title.highlighted = todayNamesHighlighted[i];
+                    
+                    
+                    i = todaySched.length;
+                }
+            }
+        }
+        
+        this.setState({blockTimeInfo: timeInfo, lunchTimeInfo: lunchTimeInfo}); 
     }
     
     handleChange = (value) => {
@@ -159,7 +251,7 @@ export default class CountdownTimer extends React.Component {
     render() {
         
         return (
-                
+            
           <div>
             <Tabs
         value={this.state.value}
@@ -168,14 +260,14 @@ export default class CountdownTimer extends React.Component {
         <Tab label="Classes" value="classes" className="countdownTab" inkbarstyle={{background: 'blue'}}>
           <div className="tabSection">
             
-            <Timer timeInfo = {this.state.currentTimeInfo} ></Timer>
+            <Timer timeInfo = {this.state.blockTimeInfo} ></Timer>
             
           </div>
         </Tab>
         <Tab label="Lunches" value="lunches" className="countdownTab" inkbarstyle={{background: 'blue'}}>
           <div className="tabSection">
             
-            <Timer timeInfo = {this.state.currentTimeInfo} ></Timer>
+            <Timer timeInfo = {this.state.lunchTimeInfo} ></Timer>
             
           </div>
         </Tab>

@@ -16,8 +16,8 @@ export default class Timer extends React.Component {
         return (
                 
           <div>
-            <h2><span className='amberText'>{this.props.timeInfo.blockTitle.highlighted}</span>{this.props.timeInfo.blockTitle.regular}</h2>
-            <h1>{this.props.timeInfo.blockRemainingHours}{this.props.timeInfo.blockRemainingMinutes}{this.props.timeInfo.blockRemainingSeconds}</h1>
+            <h2><span className='amberText'>{this.props.timeInfo.Title.highlighted}</span>{this.props.timeInfo.Title.regular}</h2>
+            <h1>{this.props.timeInfo.remainingHours}{this.props.timeInfo.remainingMinutes}{this.props.timeInfo.remainingSeconds}</h1>
           </div>    
             
         )
