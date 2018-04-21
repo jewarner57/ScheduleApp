@@ -40,12 +40,12 @@ const styles = {
 
     //Advisory Day Lunch Info
     const advisoryLunchHighlightedTitleWords = ["", "B ", "", "A ", "", "C ", "", "D "]
-    const advisoryLunchRegularTitleWords = ["Lunches Start In:", "Lunch Ends In", "", "Lunch Ends In", "", "Lunch Ends In", "", "Lunch Ends In"]
+    const advisoryLunchRegularTitleWords = ["Lunches Start In:", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In"]
     const advisoryLunchScheduleTimes = [1117, 1141, 1146, 1209, 1213, 1237, 1241, 1309];
 
     //ELT Day Lunch Info
     const eltLunchHighlightedTitleWords = ["", "B ", "", "A ", "", "C ", "", "D "]
-    const eltLunchRegularTitleWords = ["Lunches Start In:", "Lunch Ends In", "", "Lunch Ends In", "", "Lunch Ends In", "", "Lunch Ends In"]
+    const eltLunchRegularTitleWords = ["Lunches Start In:", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In"]
     const eltLunchScheduleTimes = [1117, 1141, 1146, 1209, 1213, 1237, 1241, 1309];
 
 export default class CountdownTimer extends React.Component {
@@ -123,6 +123,7 @@ export default class CountdownTimer extends React.Component {
         }
         else {
             dayInfo[0] = "weekend"; 
+            dayInfo[3] = "weekend";
         }
         
         return dayInfo;
@@ -194,8 +195,8 @@ export default class CountdownTimer extends React.Component {
         todayNamesHighlighted = dayInfo[5];
         
         if(todaySched === "weekend" || hours*100+minutes > todaySched[todaySched.length-1]) {
-            lunchTimeInfo.remainingHours = "Lunches";
-            lunchTimeInfo.remainingMinutes = " Are";
+            lunchTimeInfo.remainingHours = "Lunch";
+            lunchTimeInfo.remainingMinutes = " is";
             lunchTimeInfo.remainingSeconds = " Over.";
         }
         else {
