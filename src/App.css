@@ -1,11 +1,15 @@
 
-/*Fonts*/
+/*Fonts and Text*/
 
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
   src: url(https://fonts.googleapis.com/css?family=Roboto);
+}
+
+.amberText {
+    color:#ffd54f;
 }
 
 /*Header*/
@@ -74,7 +78,25 @@
     }
 }
 
-.amberText {
-    color:#ffd54f;
+/*Schedule Picker*/
+.schedulePicker {
+    background-color: #2196f3;
+}
+
+.schedulePickerField {
+    text-align: center;
+    vertical-align: bottom;
+    margin-bottom: 20px;
+}
+
+.scheduleTitle {
+    margin:0;
+    padding:20px;
+    font-size: 18px;
+    color:white;
+}
+
+.scheduleList {
+    background-color:#303030;
 }
 

@@ -14,45 +14,11 @@ const styles = {
   },
 };
 
-//Block Schedules
-
-    //Regluar Day Block Info
-    const regularBlockHighlightedTitleWords = ["", "First ", "", "Second ", "", "Third ", "", "Fourth "]
-    const regularBlockRegularTitleWords = ["School Starts In:", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In"]
-    const regularBlockScheduleTimes = [745, 916, 925, 1053, 1100, 1300, 1307, 1435];
-
-    //Advisory Day Block Info
-    const advisoryBlockHighlightedTitleWords = ["", "Advisory ", "", "First ", "", "Second ", "", "Third ", "", "Fourth "]
-    const advisoryBlockRegularTitleWords = ["School Starts In:", "Period Ends In:", "Class Change:", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In"]
-    const advisoryBlockScheduleTimes = [745, 815, 822, 941, 950, 1110, 1117, 1309, 1316, 1435];
-
-    //ELT Day Block Info
-    const eltBlockHighlightedTitleWords = ["", "First ","", "ELT ", "", "Second ", "", "Third ", "", "Fourth "]
-    const eltBlockRegularTitleWords = ["School Starts In:", "Block Ends In", "", "Period Ends In:", "Class Change", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In"]
-    const eltBlockScheduleTimes = [745, 900, 906, 956, 1005, 1117, 1224, 1316, 123, 1435];
-
-//Lunch Schedule
-
-    //Regluar Day Lunch Info
-    const regularLunchHighlightedTitleWords = ["", "A ", "B ", "C ", "D "]
-    const regularLunchRegularTitleWords = ["Lunches Start In:", "Lunch Ends In", "Lunch Ends In", "Lunch Ends In", "Lunch Ends In"]
-    const regularLunchScheduleTimes = [1100, 1130, 1200, 1230, 1300];
-
-    //Advisory Day Lunch Info
-    const advisoryLunchHighlightedTitleWords = ["", "B ", "", "A ", "", "C ", "", "D "]
-    const advisoryLunchRegularTitleWords = ["Lunches Start In:", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In"]
-    const advisoryLunchScheduleTimes = [1117, 1141, 1146, 1209, 1213, 1237, 1241, 1309];
-
-    //ELT Day Lunch Info
-    const eltLunchHighlightedTitleWords = ["", "B ", "", "A ", "", "C ", "", "D "]
-    const eltLunchRegularTitleWords = ["Lunches Start In:", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In"]
-    const eltLunchScheduleTimes = [1117, 1141, 1146, 1209, 1213, 1237, 1241, 1309];
-
 export default class CountdownTimer extends React.Component {
       
     constructor(props) {
         super(props);
-
+        
         this.state = {
             slideIndex: 0,
             blockTimeInfo: {
@@ -95,31 +61,31 @@ export default class CountdownTimer extends React.Component {
         let dayInfo = [];
         
         if(today === 1 || today === 4) {
-            dayInfo[0] = advisoryBlockScheduleTimes;
-            dayInfo[1] = advisoryBlockRegularTitleWords;
-            dayInfo[2] = advisoryBlockHighlightedTitleWords;
+            dayInfo[0] = this.props.blockSchedules.advisoryBlockScheduleTimes;
+            dayInfo[1] = this.props.blockSchedules.advisoryBlockRegularTitleWords;
+            dayInfo[2] = this.props.blockSchedules.advisoryBlockHighlightedTitleWords;
             
-            dayInfo[3] = advisoryLunchScheduleTimes;
-            dayInfo[4] = advisoryLunchRegularTitleWords;
-            dayInfo[5] = advisoryLunchHighlightedTitleWords;
+            dayInfo[3] = this.props.lunchSchedules.advisoryLunchScheduleTimes;
+            dayInfo[4] = this.props.lunchSchedules.advisoryLunchRegularTitleWords;
+            dayInfo[5] = this.props.lunchSchedules.advisoryLunchHighlightedTitleWords;
         }
         else if(today === 2 || today === 5) {
-            dayInfo[0] = regularBlockScheduleTimes;
-            dayInfo[1] = regularBlockRegularTitleWords;
-            dayInfo[2] = regularBlockHighlightedTitleWords;
+            dayInfo[0] = this.props.blockSchedules.regularBlockScheduleTimes;
+            dayInfo[1] = this.props.blockSchedules.regularBlockRegularTitleWords;
+            dayInfo[2] = this.props.blockSchedules.regularBlockHighlightedTitleWords;
             
-            dayInfo[3] = advisoryLunchScheduleTimes;
-            dayInfo[4] = advisoryLunchRegularTitleWords;
-            dayInfo[5] = advisoryLunchHighlightedTitleWords;
+            dayInfo[3] = this.props.lunchSchedules.advisoryLunchScheduleTimes;
+            dayInfo[4] = this.props.lunchSchedules.advisoryLunchRegularTitleWords;
+            dayInfo[5] = this.props.lunchSchedules.advisoryLunchHighlightedTitleWords;
         }
         else if(today === 3) {
-            dayInfo[0] = eltBlockScheduleTimes;
-            dayInfo[1] = eltBlockRegularTitleWords;
-            dayInfo[2] = eltBlockHighlightedTitleWords;
+            dayInfo[0] = this.props.blockSchedules.eltBlockScheduleTimes;
+            dayInfo[1] = this.props.blockSchedules.eltBlockRegularTitleWords;
+            dayInfo[2] = this.props.blockSchedules.eltBlockHighlightedTitleWords;
             
-            dayInfo[3] = advisoryLunchScheduleTimes;
-            dayInfo[4] = advisoryLunchRegularTitleWords;
-            dayInfo[5] = advisoryLunchHighlightedTitleWords;
+            dayInfo[3] = this.props.lunchSchedules.advisoryLunchScheduleTimes;
+            dayInfo[4] = this.props.lunchSchedules.advisoryLunchRegularTitleWords;
+            dayInfo[5] = this.props.lunchSchedules.advisoryLunchHighlightedTitleWords;
         }
         else {
             dayInfo[0] = "weekend"; 
@@ -133,20 +99,27 @@ export default class CountdownTimer extends React.Component {
         
         const date = new Date();
         const today = date.getDay();
+        
         let timeInfo = this.state.blockTimeInfo;
+        
         let hours = date.getHours();
         let minutes = date.getMinutes();
         let seconds = date.getSeconds()
+        
         let dayInfo = this.getDaySched();
         let todaySched = dayInfo[0];
         let todayNames = dayInfo[1];
         let todayNamesHighlighted = dayInfo[2];
         
-        
-        if(todaySched === "weekend" || hours*100+minutes > 1435) {
+        if(todaySched === "weekend") {
+            timeInfo.remainingHours = "No ";
+            timeInfo.remainingMinutes = " School ";
+            timeInfo.remainingSeconds = "Today";
+        }
+        else if(hours*100+minutes > 1435) {
             timeInfo.remainingHours = "Classes";
             timeInfo.remainingMinutes = " Are";
-            timeInfo.remainingSeconds = " Over.";
+            timeInfo.remainingSeconds = " Over";
         }
         else {
             for(let i = 0; i < todaySched.length; i++) {
@@ -194,10 +167,15 @@ export default class CountdownTimer extends React.Component {
         todayNames = dayInfo[4];
         todayNamesHighlighted = dayInfo[5];
         
-        if(todaySched === "weekend" || hours*100+minutes > todaySched[todaySched.length-1]) {
+        if(todaySched === "weekend") {
+            lunchTimeInfo.remainingHours = "No";
+            lunchTimeInfo.remainingMinutes = " School ";
+            lunchTimeInfo.remainingSeconds = " Today";
+        }
+        else if(hours*100+minutes > todaySched[todaySched.length-1]) {
             lunchTimeInfo.remainingHours = "Lunch";
-            lunchTimeInfo.remainingMinutes = " is";
-            lunchTimeInfo.remainingSeconds = " Over.";
+            lunchTimeInfo.remainingMinutes = " is ";
+            lunchTimeInfo.remainingSeconds = " Over";
         }
         else {
             for(let i = 0; i < todaySched.length; i++) {
