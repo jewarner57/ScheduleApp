@@ -113,6 +113,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content:center;
+    border-bottom: 2px solid #ffc107; 
 }
 
 .scheduleList {
