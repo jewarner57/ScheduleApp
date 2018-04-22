@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import CountdownTimer from './CountdownTimer.js';
 import SchedulePicker from './SchedulePicker.js';
+import { Timeline } from 'react-twitter-widgets'
 
 //Block Schedules
 
@@ -62,7 +63,7 @@ class App extends Component {
                 
             ],
             
-            lunchSchedules: {
+            lunchSchedules: [
                 
                 regularLunchHighlightedTitleWords: regularLunchHighlightedTitleWords,
                 regularLunchRegularTitleWords: regularLunchRegularTitleWords,
@@ -76,7 +77,7 @@ class App extends Component {
                 eltLunchRegularTitleWords: eltLunchRegularTitleWords,
                 eltLunchScheduleTimes: eltLunchScheduleTimes
                 
-            }
+            ]
         };
         
   }    
@@ -93,6 +94,20 @@ class App extends Component {
                 
                 <SchedulePicker blockSchedules = {this.state.blockSchedules} lunchSchedules = {this.state.lunchSchedules}></SchedulePicker>
         
+                <div className = "twitterPage">
+                    <Timeline
+                        dataSource={{
+                          sourceType: 'profile',
+                          screenName: 'HarrisonburgHS'
+                        }}
+                        options={{
+                          username: 'HarrisonburgHS',
+                          height: '600',
+                          width: '1200',
+                          theme:"dark"
+                        }}
+                    />
+                </div>
         </MuiThemeProvider>
                                     
         

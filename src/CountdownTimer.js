@@ -2,18 +2,6 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import React, { Component } from 'react';
 import Timer from './Timer.js'
 
-const styles = {
-  headline: {
-    fontSize: 24,
-    paddingTop: 16,
-    marginBottom: 12,
-    fontWeight: 400,
-  },
-  slide: {
-    padding: 10,
-  },
-};
-
 export default class CountdownTimer extends React.Component {
       
     constructor(props) {
@@ -61,31 +49,34 @@ export default class CountdownTimer extends React.Component {
         let dayInfo = [];
         
         if(today === 1 || today === 4) {
-            dayInfo[0] = this.props.blockSchedules.advisoryBlockScheduleTimes;
-            dayInfo[1] = this.props.blockSchedules.advisoryBlockRegularTitleWords;
-            dayInfo[2] = this.props.blockSchedules.advisoryBlockHighlightedTitleWords;
+            //advisory day
+            dayInfo[0] = this.props.blockSchedules[5];
+            dayInfo[1] = this.props.blockSchedules[4];
+            dayInfo[2] = this.props.blockSchedules[3];
             
-            dayInfo[3] = this.props.lunchSchedules.advisoryLunchScheduleTimes;
-            dayInfo[4] = this.props.lunchSchedules.advisoryLunchRegularTitleWords;
-            dayInfo[5] = this.props.lunchSchedules.advisoryLunchHighlightedTitleWords;
+            dayInfo[3] = this.props.lunchSchedules[5];
+            dayInfo[4] = this.props.lunchSchedules[4];
+            dayInfo[5] = this.props.lunchSchedules[3];
         }
         else if(today === 2 || today === 5) {
-            dayInfo[0] = this.props.blockSchedules.regularBlockScheduleTimes;
-            dayInfo[1] = this.props.blockSchedules.regularBlockRegularTitleWords;
-            dayInfo[2] = this.props.blockSchedules.regularBlockHighlightedTitleWords;
+            //regular day
+            dayInfo[0] = this.props.blockSchedules[2];
+            dayInfo[1] = this.props.blockSchedules[1];
+            dayInfo[2] = this.props.blockSchedules[0];
             
-            dayInfo[3] = this.props.lunchSchedules.advisoryLunchScheduleTimes;
-            dayInfo[4] = this.props.lunchSchedules.advisoryLunchRegularTitleWords;
-            dayInfo[5] = this.props.lunchSchedules.advisoryLunchHighlightedTitleWords;
+            dayInfo[3] = this.props.lunchSchedules[2];
+            dayInfo[4] = this.props.lunchSchedules[1];
+            dayInfo[5] = this.props.lunchSchedules[0];
         }
-        else if(today === 3) {
-            dayInfo[0] = this.props.blockSchedules.eltBlockScheduleTimes;
-            dayInfo[1] = this.props.blockSchedules.eltBlockRegularTitleWords;
-            dayInfo[2] = this.props.blockSchedules.eltBlockHighlightedTitleWords;
+        else if (today === 3) {
+            //elt day
+            dayInfo[0] = this.props.blockSchedules[8];
+            dayInfo[1] = this.props.blockSchedules[7];
+            dayInfo[2] = this.props.blockSchedules[6];
             
-            dayInfo[3] = this.props.lunchSchedules.advisoryLunchScheduleTimes;
-            dayInfo[4] = this.props.lunchSchedules.advisoryLunchRegularTitleWords;
-            dayInfo[5] = this.props.lunchSchedules.advisoryLunchHighlightedTitleWords;
+            dayInfo[3] = this.props.lunchSchedules[8];
+            dayInfo[4] = this.props.lunchSchedules[7];
+            dayInfo[5] = this.props.lunchSchedules[6];
         }
         else {
             dayInfo[0] = "weekend"; 
@@ -98,7 +89,6 @@ export default class CountdownTimer extends React.Component {
     getRemainingBlockTime() {
         
         const date = new Date();
-        const today = date.getDay();
         
         let timeInfo = this.state.blockTimeInfo;
         
