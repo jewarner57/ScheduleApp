@@ -41,7 +41,7 @@ export default class SchedulePicker extends React.Component {
         let skipClassChanges = true;
         
         //If its a regular lunch day skip class changes between lunches because there are none
-        if(value === 0) {
+        if(value === 0 || value === 9) {
             skipClassChanges = false;
         }
         
@@ -96,6 +96,8 @@ export default class SchedulePicker extends React.Component {
                     <MenuItem value={0} primaryText="Regular" />
                     <MenuItem value={3} primaryText="Advisory" />
                     <MenuItem value={6} primaryText="ELT" />
+                    <MenuItem value={9} primaryText="One Hour Delay" />
+                    <MenuItem value={12} primaryText="Two Hour Delay" />
                 </SelectField>
                 <div className="scheduleListSection">
             

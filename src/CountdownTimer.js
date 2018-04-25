@@ -102,11 +102,13 @@ export default class CountdownTimer extends React.Component {
         let todayNamesHighlighted = dayInfo[2];
         
         if(todaySched === "weekend") {
+            timeInfo.Title = "";
             timeInfo.remainingHours = "No ";
             timeInfo.remainingMinutes = " School ";
             timeInfo.remainingSeconds = "Today";
         }
         else if(hours*100+minutes > 1435) {
+            timeInfo.Title = "";
             timeInfo.remainingHours = "Classes";
             timeInfo.remainingMinutes = " Are";
             timeInfo.remainingSeconds = " Over";
@@ -158,11 +160,13 @@ export default class CountdownTimer extends React.Component {
         todayNamesHighlighted = dayInfo[5];
         
         if(todaySched === "weekend") {
+            lunchTimeInfo.Title = "";
             lunchTimeInfo.remainingHours = "No";
             lunchTimeInfo.remainingMinutes = " School ";
             lunchTimeInfo.remainingSeconds = " Today";
         }
         else if(hours*100+minutes > todaySched[todaySched.length-1]) {
+            lunchTimeInfo.Title = "";
             lunchTimeInfo.remainingHours = "Lunch";
             lunchTimeInfo.remainingMinutes = " is ";
             lunchTimeInfo.remainingSeconds = " Over";
