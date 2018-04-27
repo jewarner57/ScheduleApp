@@ -6,7 +6,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import CountdownTimer from './CountdownTimer.js';
 import SchedulePicker from './SchedulePicker.js';
 import { Timeline } from 'react-twitter-widgets';
-import Footer from './Footer.js'
+import Footer from './Footer.js';
+import PdfView from './PdfView.js';
 
 //Block Schedules
 
@@ -128,6 +129,8 @@ class App extends Component {
                 
                 <SchedulePicker blockSchedules = {this.state.blockSchedules} lunchSchedules = {this.state.lunchSchedules}></SchedulePicker>
         
+                <PdfView></PdfView> 
+                
                 <div className = "twitterPage">
                     <Timeline
                         dataSource={{
@@ -142,7 +145,7 @@ class App extends Component {
                         }}
                     />
                 </div>
-                    
+                      
                 <Footer></Footer>    
         </MuiThemeProvider>
                                     

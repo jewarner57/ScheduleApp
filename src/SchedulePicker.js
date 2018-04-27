@@ -24,7 +24,7 @@ export default class SchedulePicker extends React.Component {
     }
     
     getSchedule(values) {
-        const value=values;
+        const value=values*3;
         
         let blockSelectedSchedule = [];
         let highlightTitle = this.props.blockSchedules[value];
@@ -94,10 +94,10 @@ export default class SchedulePicker extends React.Component {
                     onChange={this.handleChange}
                  >
                     <MenuItem value={0} primaryText="Regular" />
-                    <MenuItem value={3} primaryText="Advisory" />
-                    <MenuItem value={6} primaryText="ELT" />
-                    <MenuItem value={9} primaryText="One Hour Delay" />
-                    <MenuItem value={12} primaryText="Two Hour Delay" />
+                    <MenuItem value={1} primaryText="Advisory" />
+                    <MenuItem value={2} primaryText="ELT" />
+                    <MenuItem value={3} primaryText="One Hour Delay" />
+                    <MenuItem value={4} primaryText="Two Hour Delay" />
                 </SelectField>
                 <div className="scheduleListSection">
             

@@ -15,10 +15,9 @@ User will be able to view the hhs broadcasting announcements
 User will be able to see remaining number of days until school is out. / number of days school has been in session.
 User will be able to see a list of the week's lunch menu. (This may not be possible. The school makes the week's lunch avaliable on a pdf linked on their website)
 User will be able to view powerschool grades. (Is it possible to display user information from a 3rd party password protected site?)
-User will be able to see other school related twitter pages.
 User will be able to see some sort of weather page
                                                       
-                                                      
+                                                    
 ---------------
 
 

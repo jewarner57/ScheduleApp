@@ -6,6 +6,8 @@
     "material-ui": "^0.20.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-pdf": "^3.0.4",
+    "react-pdf-js": "^3.0.7",
     "react-scripts": "1.1.4",
     "react-twitter-widgets": "^1.7.1"
   },

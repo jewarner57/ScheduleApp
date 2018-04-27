@@ -143,6 +143,66 @@
     padding-bottom: 20px;
 }
 
+/*Lunch Menu PDF*/
+.pdfSection {
+    background-color:#2196f3;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: flex;
+}
+
+.pdfdoc {
+    position: flex;
+}
+
+.pdfBackground {
+    width:100vw;
+    justify-content: center;
+    background-color: #303030; 
+    color:red;
+}
+
+.openPdfButton {
+    
+    margin: 25px 0 25px 0;
+    
+    
+}
+
+.pdfButtonContainer {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    
+}
+
+.pdfButtonContainer p {
+    margin:25px;
+    line-height: 35px;
+    font-family: 'Roboto', sans-serif;
+    color:white;
+    font-size: 24px;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 600;
+}
+
+.loadingIcon {
+    margin-top:55px;
+    display: none;
+}
+
+.react-pdf__message--error {
+    margin-top:90px !important;
+}
+
 /*Footer*/
 .footer {
     background-color: #303030;
