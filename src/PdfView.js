@@ -17,6 +17,7 @@ export default class PdfView extends React.Component {
             backgroundHeight: {height: 200},
             pdfLoaded: false,
             loadingIconClass: "visible loadingIcon",
+            pdfLink: "",
             
         })
         this.showPDF = this.showPDF.bind(this);
@@ -24,8 +25,41 @@ export default class PdfView extends React.Component {
         this.errorLoadingPDF = this.errorLoadingPDF.bind(this);
         this.pdfDidLoad = this.pdfDidLoad.bind(this);
         this.checkIfPDFLoaded = this.checkIfPDFLoaded.bind(this);
+        this.getPDFLink = this.getPDFLink.bind(this);
         
         window.addEventListener("resize", this.checkIfPDFLoaded);
+    }
+    
+    componentWillMount() {
+        this.getPDFLink();
+    }
+    
+    getPDFLink() {
+        
+        const linkStart = "https://cors-anywhere.herokuapp.com/http://harrisonburg.k12.va.us/files/user/2/file/HHS_";
+        const linkEnd = "_.pdf";
+        
+        const date = new Date();
+        let linkDay = date.getDate() - date.getDay() + 1;
+        let linkMonth = date.getMonth()+1;
+        const linkYear = date.getFullYear()-2000;
+        
+        
+        const monthOverlapDate = new Date(linkYear, date.getMonth()+1, 0);
+        console.log(monthOverlapDate)
+        if(linkDay < 1) {
+            linkMonth -= 1;
+            linkDay = linkDay += monthOverlapDate.getDate();
+        }
+        
+        if(linkDay < 10) {
+            linkDay = "0"+linkDay;
+        }
+        
+        const link = linkStart + linkMonth + "-" + linkDay + "-" + linkYear + linkEnd;
+        
+        console.log(linkStart + linkMonth + "-" + linkDay + "-" + linkYear + linkEnd);
+        this.setState({pdfLink: link});
     }
     
     checkIfPDFLoaded() {
@@ -43,8 +77,6 @@ export default class PdfView extends React.Component {
         const backgroundStyle = {
             height: backgroundHeight,
         }
-
-        console.log('resized');
         this.setState({screenWidth: window.innerWidth, backgroundHeight: backgroundStyle});
     }
     
@@ -64,6 +96,7 @@ export default class PdfView extends React.Component {
     
     errorLoadingPDF() {
         this.setState({pdfLoaded: false, loadingIconClass: "hidden"});
+        console.log(this.state.pdfLink);
     }
     
     pdfDidLoad() {
@@ -99,7 +132,7 @@ export default class PdfView extends React.Component {
                         
                         <div className={this.state.pdfStyle}>
 
-                            <Document file="https://cors-anywhere.herokuapp.com/http://harrisonburg.k12.va.us/HarrisonburgCitySchools/media/images/HHS_4-23-18_.pdf" onLoadError = {this.errorLoadingPDF} onLoadSuccess = {this.pdfDidLoad} error="Couldn't Load Lunch Menu" loading="">
+                            <Document file={this.state.pdfLink} onLoadError = {this.errorLoadingPDF} onLoadSuccess = {this.pdfDidLoad} error="Couldn't Load Lunch Menu" loading="">
 
                                 <Page pageNumber={1} width={this.state.screenWidth}/>
 
