@@ -18,6 +18,7 @@ export default class PdfView extends React.Component {
             pdfLoaded: false,
             loadingIconClass: "visible loadingIcon",
             pdfLink: "",
+					  errorMessageClass: "hidden",
             
         })
         this.showPDF = this.showPDF.bind(this);
@@ -40,7 +41,7 @@ export default class PdfView extends React.Component {
         const linkEnd = "_.pdf";
         
         const date = new Date();
-        let linkDay = date.getDate() - date.getDay() + 1;
+        let linkDay = date.getDate() - date.getDay() + 2;
         let linkMonth = date.getMonth()+1;
         const linkYear = date.getFullYear()-2000;
         
@@ -82,20 +83,24 @@ export default class PdfView extends React.Component {
     
     showPDF() {
         
-        let currentStyle = this.state.pdfVisible;
-        
-        if(currentStyle === "hidden") {
+        let currentStyle = this.state.pdfVisible;  
+			
+        if(currentStyle === "hidden" || currentStyle === "hidden backgroundError") {
             currentStyle = "visible";
         }
         else {
             currentStyle = "hidden";
         }
+			
+				if(this.state.errorMessageClass === "visible errorMessage") {//if the pdf failed to load
+						currentStyle += " backgroundError";
+				}
         
         this.setState({pdfVisible: currentStyle, pdfStyle: "pdfdoc" + " " + currentStyle, backgroundStyle: "pdfBackground" + " " + currentStyle});
     }
     
     errorLoadingPDF() {
-        this.setState({pdfLoaded: false, loadingIconClass: "hidden"});
+        this.setState({pdfLoaded: false, loadingIconClass: "hidden", errorMessageClass: "visible errorMessage", backgroundStyle: "pdfBackground backgroundError visible" });
         console.log(this.state.pdfLink);
     }
     
@@ -129,10 +134,12 @@ export default class PdfView extends React.Component {
                     <div className={this.state.backgroundStyle} style={this.state.backgroundHeight}>
                         
                         <CircularProgress size={80} thickness={5} className={this.state.loadingIconClass}/>
-                        
+          						
+												<h3 className={this.state.errorMessageClass}>Oops! Im having trouble loading the lunch menu. Try viewing it <a href="https://harrisonburg.k12.va.us/District/Department/3-School-Nutrition" target="_blank" className="lunchPDFErrorLink"> Here</a></h3>
+					
                         <div className={this.state.pdfStyle}>
 
-                            <Document file={this.state.pdfLink} onLoadError = {this.errorLoadingPDF} onLoadSuccess = {this.pdfDidLoad} error="Couldn't Load Lunch Menu" loading="">
+                            <Document file={this.state.pdfLink} onLoadError = {this.errorLoadingPDF} onLoadSuccess = {this.pdfDidLoad} error="" loading="">
 
                                 <Page pageNumber={1} width={this.state.screenWidth}/>
 

@@ -167,6 +167,10 @@
     color:red;
 }
 
+.backgroundError {
+	align-items: center;
+}
+
 .openPdfButton {
     
     margin: 25px 0 25px 0;
@@ -197,6 +201,30 @@
 .loadingIcon {
     margin-top:55px;
     display: none;
+}
+
+.errorMessage {
+		color: #F44336;
+		font-weight: 500;
+		height: 30px;
+}
+
+.lunchPDFErrorLink {
+	color: #ffd54f;
+	text-decoration: none;
+	padding-left:10px;
+	
+	animation-name: linkHover;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+
+}
+
+/*animation for lunch pdf error link*/
+@keyframes linkHover {
+    0% {color: #ffd54f;}
+    50% {color: #FFB74D;}
+		100% {color: #ffd54f;}
 }
 
 .react-pdf__message--error {
