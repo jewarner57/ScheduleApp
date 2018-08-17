@@ -100,7 +100,10 @@ export default class PdfView extends React.Component {
     }
     
     errorLoadingPDF() {
-        this.setState({pdfLoaded: false, loadingIconClass: "hidden", errorMessageClass: "visible errorMessage", backgroundStyle: "pdfBackground backgroundError visible" });
+			
+				const currentBackgroundStyle = this.state.backgroundStyle
+			
+        this.setState({pdfLoaded: false, loadingIconClass: "hidden", errorMessageClass: "visible errorMessage", backgroundStyle: currentBackgroundStyle+" backgroundError" });
         console.log(this.state.pdfLink);
     }
     
