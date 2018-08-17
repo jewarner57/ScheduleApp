@@ -47,7 +47,7 @@ export default class SchedulePicker extends React.Component {
 
                 </div>
                 <div className="scheduleList">
-                    <p className="grayText">Lunch Schedule</p>
+                    <p className="grayText">{this.props.lunchDisplayTitle}</p>
                     
                     {this.props.lunchSelectedSchedule.map((schedule , index) => (  
             

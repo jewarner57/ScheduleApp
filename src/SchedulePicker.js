@@ -13,6 +13,7 @@ export default class SchedulePicker extends React.Component {
             blockSelectedSchedule: [],
             lunchSelectedSchedule: [],
             values: 0,
+						lunchDisplayTitle: "Lunch Schedule",
         };
         this.handleChange = this.handleChange.bind(this);
         this.getSchedule = this.getSchedule.bind(this);
@@ -33,29 +34,25 @@ export default class SchedulePicker extends React.Component {
         
         this.addItemsToSchedule(blockSelectedSchedule, highlightTitle, title, time, true);
        
-        
-        let lunchSelectedSchedule = [];
-        highlightTitle = this.props.lunchSchedules[value];
-        title = this.props.lunchSchedules[value+1];
-        time = this.props.lunchSchedules[value+2];
-        let skipClassChanges = true;
-        
-        //If its a regular lunch day skip class changes between lunches because there are none
-        if(value === 0 || value === 9) {
-            skipClassChanges = false;
-        }
-        
-        this.addItemsToSchedule(lunchSelectedSchedule, highlightTitle, title, time, skipClassChanges);
-        
+				
+				let lunchSelectedSchedule = [];
+        if(values != 4) {//if early release is selected dont display lunches
+					highlightTitle = this.props.lunchSchedules[value];
+					title = this.props.lunchSchedules[value+1];
+					time = this.props.lunchSchedules[value+2];
+
+					this.setState({lunchDisplayTitle: "Lunch Schedule"});
+					this.addItemsToSchedule(lunchSelectedSchedule, highlightTitle, title, time);
+				}
+				else {
+					this.setState({lunchDisplayTitle: "No Lunches On Early Release"});
+				}
         this.setState({blockSelectedSchedule: blockSelectedSchedule, lunchSelectedSchedule: lunchSelectedSchedule});
+				
     }
     
-    addItemsToSchedule(selectedSchedule, highlightTitle, title, time, skipClassChanges) {
-         let countSpeed = 1;
-        
-         if(skipClassChanges === true) {
-            countSpeed = 2;
-         }
+    addItemsToSchedule(selectedSchedule, highlightTitle, title, time) {
+         let countSpeed = 2;
         
          for(let i = 1; i < highlightTitle.length; i+=countSpeed) { 
             selectedSchedule.push({
@@ -94,14 +91,16 @@ export default class SchedulePicker extends React.Component {
                     onChange={this.handleChange}
                  >
                     <MenuItem value={0} primaryText="Regular" />
-                    <MenuItem value={1} primaryText="Advisory" />
-                    <MenuItem value={2} primaryText="ELT" />
-                    <MenuItem value={3} primaryText="One Hour Delay" />
-                    <MenuItem value={4} primaryText="Two Hour Delay" />
+                    <MenuItem value={1} primaryText="ADV/ELT" />
+                    <MenuItem value={2} primaryText="One Hour Delay" />
+                    <MenuItem value={3} primaryText="Two Hour Delay" />
+										<MenuItem value={4} primaryText="Early Release" />
+										<MenuItem value={5} primaryText="Pep Rally" />
+										<MenuItem value={6} primaryText="Assembly" />
                 </SelectField>
                 <div className="scheduleListSection">
             
-                    <ScheduleList blockSelectedSchedule={this.state.blockSelectedSchedule} lunchSelectedSchedule={this.state.lunchSelectedSchedule}></ScheduleList>
+                    <ScheduleList blockSelectedSchedule={this.state.blockSelectedSchedule} lunchSelectedSchedule={this.state.lunchSelectedSchedule} lunchDisplayTitle={this.state.lunchDisplayTitle}></ScheduleList>
             
                 </div>
           </div>    

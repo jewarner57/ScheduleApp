@@ -16,15 +16,10 @@ import PdfView from './PdfView.js';
     const regularBlockRegularTitleWords = ["School Starts In:", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In"]
     const regularBlockScheduleTimes = [745, 916, 925, 1053, 1100, 1300, 1307, 1435];
 
-    //Advisory Day Block Info
-    const advisoryBlockHighlightedTitleWords = ["", "Advisory ", "", "First ", "", "Second ", "", "Third ", "", "Fourth "]
-    const advisoryBlockRegularTitleWords = ["School Starts In:", "Period Ends In:", "Class Change:", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In"]
-    const advisoryBlockScheduleTimes = [745, 815, 822, 941, 950, 1110, 1117, 1309, 1316, 1435];
-
-    //ELT Day Block Info
-    const eltBlockHighlightedTitleWords = ["", "First ","", "ELT ", "", "Second ", "", "Third ", "", "Fourth "]
-    const eltBlockRegularTitleWords = ["School Starts In:", "Block Ends In", "", "Period Ends In:", "Class Change", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In"]
-    const eltBlockScheduleTimes = [745, 900, 906, 956, 1005, 1117, 1224, 1316, 1323, 1435];
+    //Adv/ELT Day Block Info
+    const advisoryeltBlockHighlightedTitleWords = ["", "First ", "", "ADV/ELT ", "", "Second ", "", "Third ", "", "Fourth "]
+    const advisoryeltBlockRegularTitleWords = ["School Starts In:", "Ends In:", "Class Change:", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In"]
+    const advisoryeltBlockScheduleTimes = [745, 903, 912, 952, 959, 1114, 1121, 1313, 1320, 1435];
 
     //2 Hour Delay Block Info
     const twoHourDelayBlockHighlightedTitleWords = ["", "First ", "", "Second ", "", "Third ", "", "Fourth "];
@@ -34,34 +29,60 @@ import PdfView from './PdfView.js';
     //1 Hour Delay Block Info
     const oneHourDelayBlockHighlightedTitleWords = ["", "First ", "", "Second ", "", "Third ", "", "Fourth "];
     const oneHourDelayBlockTitleWords = ["", "", "", "", "", "" , "", ""];
-    const oneHourDelayBlockScheduleTimes = [845, 947, 955, 1053, 1100, 1300, 1307, 1435];
+    const oneHourDelayBlockScheduleTimes = [845, 946, 955, 1053, 1100, 1300, 1307, 1435];
+
+		//Early Release Block Info
+    const earlyReleaseBlockHighlightedTitleWords = ["", "First ", "", "Second ", "", "Third ", "", "Fourth "];
+    const earlyReleaseBlockTitleWords = ["", "", "", "", "", "" , "", ""];
+    const earlyReleaseBlockScheduleTimes = [745, 846, 855, 952, 959, 1056, 1103, 1200];
+
+		//Pep Rally Release Block Info
+    const pepRallyBlockHighlightedTitleWords = ["", "First ", "", "Second ", "", "Third ", "", "Fourth ", "", "Pep Rally"];
+    const pepRallyBlockTitleWords = ["", "", "", "", "", "" , "", "", ""];
+    const pepRallyBlockScheduleTimes = [745, 906, 915, 1033, 1040, 1232, 1239, 1357, 1357, 1435];
+
+		//Assembly Block Info
+    const assemblyBlockHighlightedTitleWords = ["", "First ", "", "Assembly ", "", "Second ", "", "Third ", "", "Fourth"];
+    const assemblyBlockTitleWords = ["", "", "", "", "", "" , "", "", ""];
+    const assemblyBlockScheduleTimes = [745, 846, 855, 953, 953, 1053, 1100, 1300, 1307, 1435];
     
 //Lunch Schedule
 
     //Regluar Day Lunch Info
-    const regularLunchHighlightedTitleWords = ["", "A ", "B ", "C ", "D "]
-    const regularLunchRegularTitleWords = ["Lunches Start In:", "Lunch Ends In", "Lunch Ends In", "Lunch Ends In", "Lunch Ends In"]
-    const regularLunchScheduleTimes = [1100, 1130, 1200, 1230, 1300];
+    const regularLunchHighlightedTitleWords = ["", "A ", "", "B ", "", "C ", "", "D "];
+    const regularLunchRegularTitleWords = ["Lunches Start In:", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In"]
+    const regularLunchScheduleTimes = [1100, 1125, 1130, 1155, 1200, 1225, 1230, 1300];
 
-    //Advisory Day Lunch Info
-    const advisoryLunchHighlightedTitleWords = ["", "B ", "", "A ", "", "C ", "", "D "]
-    const advisoryLunchRegularTitleWords = ["Lunches Start In:", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In"]
-    const advisoryLunchScheduleTimes = [1117, 1141, 1146, 1209, 1213, 1237, 1241, 1309];
-
-    //ELT Day Lunch Info
-    const eltLunchHighlightedTitleWords = ["", "B ", "", "A ", "", "C ", "", "D "]
-    const eltLunchRegularTitleWords = ["Lunches Start In:", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In"]
-    const eltLunchScheduleTimes = [1117, 1141, 1146, 1209, 1213, 1237, 1241, 1309];
+    //Adv/ELT Day Lunch Info
+    const advisoryeltLunchHighlightedTitleWords = ["", "A ", "", "B ", "", "C ", "", "D "];
+    const advisoryeltLunchRegularTitleWords = ["Lunches Start In:", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In"]
+    const advisoryeltLunchScheduleTimes = [1121, 1145, 1149, 1213, 1217, 1241, 1245, 1313];
 
     //2 Hour Delay Lunch Info
     const twoHourDelayLunchHighlightedTitleWords = ["", "A ", "", "B ", "", "C ", "", "D "];
-    const twoHourDelayLunchTitleWords = ["", "", "", "", "", "", "", ""];
-    const twoHourDelayLunchScheduleTimes = [1213, 1337, 1145, 1209, 1241, 1305, 1309, 1337];
+    const twoHourDelayLunchTitleWords = ["Lunches Start In:", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In"]
+    const twoHourDelayLunchScheduleTimes = [1145, 1209, 1213, 1237, 1241, 1305, 1309, 1337];
+
     //1 Hour Delay Lunch Info
-    const oneHourDelayLunchHighlightedTitleWords = ["", "A ", "B ", "C ", "D "];
-    const oneHourDelayLunchTitleWords = ["", "", "", "", ""];
-    const oneHourDelayLunchScheduleTimes = [1100, 1130, 1200, 1230, 1300];
+    const oneHourDelayLunchHighlightedTitleWords = ["", "A ", "", "B ", "", "C ", "", "D "];
+    const oneHourDelayLunchTitleWords = ["Lunches Start In:", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In"]
+    const oneHourDelayLunchScheduleTimes = [1100, 1125, 1130, 1155, 1200, 1225, 1230, 1300];
     
+		//Early Release Lunch Info
+    const earlyReleaseLunchHighlightedTitleWords = ["", " ", "", " ", "", " ", "", " "];
+    const earlyReleaseLunchTitleWords = ["", "", "", "", "", "" , "", ""];
+    const earlyReleaseLunchScheduleTimes = [];
+
+		//Pep Rally Lunch Info
+    const pepRallyLunchHighlightedTitleWords = ["", "A ", "", "B ", "", "C ", "", "D "];
+    const pepRallyLunchTitleWords = ["Lunches Start In:", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In"]
+    const pepRallyLunchScheduleTimes = [1040, 1104, 1108, 1132, 1136, 1200, 1204, 1232];
+
+		//Assembly Lunch Info
+    const assemblyLunchHighlightedTitleWords = ["", "A ", "", "B ", "", "C ", "", "D "];
+    const assemblyLunchTitleWords = ["Lunches Start In:", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In", "Class Change", "Lunch Ends In"]
+    const assemblyLunchScheduleTimes = [1100, 1125, 1130, 1155, 1200, 1225, 1230, 1300];
+
 class App extends Component {
     
   constructor(props) {
@@ -74,13 +95,9 @@ class App extends Component {
                 regularBlockRegularTitleWords: regularBlockRegularTitleWords,
                 regularBlockScheduleTimes: regularBlockScheduleTimes,
                 
-                advisoryBlockHighlightedTitleWords: advisoryBlockHighlightedTitleWords,
-                advisoryBlockRegularTitleWords: advisoryBlockRegularTitleWords,
-                advisoryBlockScheduleTimes: advisoryBlockScheduleTimes,
-                
-                eltBlockHighlightedTitleWords: eltBlockHighlightedTitleWords,
-                eltBlockRegularTitleWords: eltBlockRegularTitleWords,
-                eltBlockScheduleTimes: eltBlockScheduleTimes,
+                advisoryeltBlockHighlightedTitleWords: advisoryBlockHighlightedTitleWords,
+                advisoryeltBlockRegularTitleWords: advisoryBlockRegularTitleWords,
+                advisoryeltBlockScheduleTimes: advisoryBlockScheduleTimes,
                 
                 oneHourDelayBlockHighlightedTitleWords: oneHourDelayBlockHighlightedTitleWords,
                 oneHourDelayBlockTitleWords: oneHourDelayBlockTitleWords,
@@ -89,6 +106,18 @@ class App extends Component {
                 twoHourDelayBlockHighlightedTitleWords: twoHourDelayBlockHighlightedTitleWords,
                 twoHourDelayBlockTitleWords: twoHourDelayBlockTitleWords,
                 twoHourDelayBlockScheduleTimes: twoHourDelayBlockScheduleTimes,
+							
+								earlyReleaseBlockHighlightedTitleWords: earlyReleaseBlockHighlightedTitleWords,
+    						earlyReleaseBlockTitleWords: earlyReleaseBlockTitleWords,
+    						earlyReleaseBlockScheduleTimes: earlyReleaseBlockScheduleTimes,
+							
+								pepRallyBlockHighlightedTitleWords: pepRallyBlockHighlightedTitleWords,
+    						pepRallyBlockTitleWords: pepRallyBlockTitleWords,
+    						pepRallyBlockScheduleTimes: pepRallyBlockScheduleTimes,
+							
+								assemblyBlockHighlightedTitleWords: assemblyBlockHighlightedTitleWords,
+    						assemblyBlockTitleWords: assemblyBlockTitleWords,
+    						assemblyBlockScheduleTimes: assemblyBlockScheduleTimes,
             ],
             
             lunchSchedules: [
@@ -97,13 +126,9 @@ class App extends Component {
                 regularLunchRegularTitleWords: regularLunchRegularTitleWords,
                 regularLunchScheduleTimes: regularLunchScheduleTimes,
                 
-                advisoryLunchHighlightedTitleWords: advisoryLunchHighlightedTitleWords,
-                advisoryLunchRegularTitleWords: advisoryLunchRegularTitleWords,
-                advisoryLunchScheduleTimes: advisoryLunchScheduleTimes,
-                
-                eltLunchHighlightedTitleWords: eltLunchHighlightedTitleWords,
-                eltLunchRegularTitleWords: eltLunchRegularTitleWords,
-                eltLunchScheduleTimes: eltLunchScheduleTimes,
+                advisoryeltLunchHighlightedTitleWords: advisoryLunchHighlightedTitleWords,
+                advisoryeltLunchRegularTitleWords: advisoryLunchRegularTitleWords,
+                advisoryeltLunchScheduleTimes: advisoryLunchScheduleTimes,
                 
                 oneHourDelayLunchHighlightedTitleWords: oneHourDelayLunchHighlightedTitleWords,
                 oneHourDelayLunchTitleWords: oneHourDelayLunchTitleWords,
@@ -112,6 +137,18 @@ class App extends Component {
                 twoHourDelayLunchHighlightedTitleWords: twoHourDelayLunchHighlightedTitleWords,
                 twoHourDelayLunchTitleWords: twoHourDelayLunchTitleWords,
                 twoHourDelayLunchScheduleTimes: twoHourDelayLunchScheduleTimes,
+							
+								earlyReleaseLunchHighlightedTitleWords: earlyReleaseLunchHighlightedTitleWords,
+    						earlyReleaseLunchTitleWords: earlyReleaseLunchTitleWords,
+    						earlyReleaseLunchScheduleTimes: earlyReleaseLunchScheduleTimes,
+							
+								pepRallyLunchHighlightedTitleWords: pepRallyLunchHighlightedTitleWords,
+    						pepRallyLunchTitleWords: pepRallyLunchTitleWords,
+    						pepRallyLunchScheduleTimes: pepRallyLunchScheduleTimes,
+							
+								assemblyLunchHighlightedTitleWords: assemblyLunchHighlightedTitleWords,
+    						assemblyLunchTitleWords: assemblyLunchTitleWords,
+    						assemblyLunchScheduleTimes: assemblyLunchScheduleTimes,
             ]
         };
         

@@ -48,8 +48,8 @@ export default class CountdownTimer extends React.Component {
         const today = date.getDay();
         let dayInfo = [];
         
-        if(today === 1 || today === 4) {
-            //advisory day
+        if(today === 1 || today === 2) {
+            //advisory/elt day
             dayInfo[0] = this.props.blockSchedules[5];
             dayInfo[1] = this.props.blockSchedules[4];
             dayInfo[2] = this.props.blockSchedules[3];
@@ -58,7 +58,7 @@ export default class CountdownTimer extends React.Component {
             dayInfo[4] = this.props.lunchSchedules[4];
             dayInfo[5] = this.props.lunchSchedules[3];
         }
-        else if(today === 2 || today === 5) {
+        else if(today === 3 || today === 4 || today === 5) {
             //regular day
             dayInfo[0] = this.props.blockSchedules[2];
             dayInfo[1] = this.props.blockSchedules[1];
@@ -67,17 +67,7 @@ export default class CountdownTimer extends React.Component {
             dayInfo[3] = this.props.lunchSchedules[2];
             dayInfo[4] = this.props.lunchSchedules[1];
             dayInfo[5] = this.props.lunchSchedules[0];
-        }
-        else if (today === 3) {
-            //elt day
-            dayInfo[0] = this.props.blockSchedules[8];
-            dayInfo[1] = this.props.blockSchedules[7];
-            dayInfo[2] = this.props.blockSchedules[6];
-            
-            dayInfo[3] = this.props.lunchSchedules[8];
-            dayInfo[4] = this.props.lunchSchedules[7];
-            dayInfo[5] = this.props.lunchSchedules[6];
-        }
+				}
         else {
             dayInfo[0] = "weekend"; 
             dayInfo[3] = "weekend";
