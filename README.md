@@ -4,16 +4,16 @@ Project Outline
 ---------------
 
 - Required Features -
-User will be able to see remaining amount of time hh/mm/ss until their current class ends, or next class starts.
-User will be able to see remaining amount of time hh/mm/ss until their current lunch ends, or next lunch starts.
-User will be able to swap between images of each schedule variant.
-User will be able to see HHS twitter page displayed and/or the superintendent twitter page, whichever appears to be more relevant.
+DONE - User will be able to see remaining amount of time hh/mm/ss until their current class ends, or next class starts. 
+DONE - User will be able to see remaining amount of time hh/mm/ss until their current lunch ends, or next lunch starts.
+DONE - User will be able to swap between images of each schedule variant.
+DONE - User will be able to see HHS twitter page displayed and/or the superintendent twitter page, whichever appears to be more relevant.
 
                                                       
 - If I have extra time -
 User will be able to view the hhs broadcasting announcements
 User will be able to see remaining number of days until school is out. / number of days school has been in session.
-User will be able to see a list of the week's lunch menu. (This may not be possible. The school makes the week's lunch avaliable on a pdf linked on their website)
+DONE - User will be able to see a list of the week's lunch menu. (This may not be possible. The school makes the week's lunch avaliable on a pdf linked on their website)
 User will be able to view powerschool grades. (Is it possible to display user information from a 3rd party password protected site?)
 User will be able to see some sort of weather page
                                                       
