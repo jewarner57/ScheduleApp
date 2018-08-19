@@ -196,6 +196,16 @@
     font-size: 24px;
     -webkit-font-smoothing: antialiased;
     font-weight: 600;
+	
+		animation-name: whiteToYellow;
+  	animation-duration: 2s;
+  	animation-iteration-count: infinite;
+	
+}
+
+@keyframes whiteToYellow {
+	0% {color: #fff;}
+  50% {color: #ffc878;}
 }
 
 .loadingIcon {

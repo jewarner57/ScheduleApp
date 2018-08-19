@@ -90,8 +90,8 @@ export default class SchedulePicker extends React.Component {
                     value={this.state.values}
                     onChange={this.handleChange}
                  >
-                    <MenuItem value={0} primaryText="Regular" />
-                    <MenuItem value={1} primaryText="ADV/ELT" />
+                    <MenuItem value={0} primaryText="Full / Regular" />
+                    <MenuItem value={1} primaryText="ADV / ELT" />
                     <MenuItem value={2} primaryText="One Hour Delay" />
                     <MenuItem value={3} primaryText="Two Hour Delay" />
 										<MenuItem value={4} primaryText="Early Release" />

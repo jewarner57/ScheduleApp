@@ -19,7 +19,7 @@ import PdfView from './PdfView.js';
     //Adv/ELT Day Block Info
     const advisoryeltBlockHighlightedTitleWords = ["", "First ", "", "ADV/ELT ", "", "Second ", "", "Third ", "", "Fourth "]
     const advisoryeltBlockRegularTitleWords = ["School Starts In:", "Ends In:", "Class Change:", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In", "Class Change", "Block Ends In"]
-    const advisoryeltBlockScheduleTimes = [745, 903, 912, 952, 959, 1114, 1121, 1313, 1320, 1435];
+    const advisoryeltBlockScheduleTimes = [745, 903, 910, 950, 959, 1114, 1121, 1313, 1320, 1435];
 
     //2 Hour Delay Block Info
     const twoHourDelayBlockHighlightedTitleWords = ["", "First ", "", "Second ", "", "Third ", "", "Fourth "];
