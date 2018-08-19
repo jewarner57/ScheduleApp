@@ -207,12 +207,20 @@
 		color: #F44336;
 		font-weight: 500;
 		height: 30px;
+		text-decoration: none;
+		display: flex;
 }
 
-.lunchPDFErrorLink {
+@media only screen and (max-width: 600px) {
+	.errorMessage {
+		flex-direction: column
+	}
+}
+
+.lunchPDFErrorYellowHere {
 	color: #ffd54f;
 	text-decoration: none;
-	padding-left:10px;
+	margin-left:8px;
 	
 	animation-name: linkHover;
   animation-duration: 2s;

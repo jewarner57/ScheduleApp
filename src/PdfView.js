@@ -27,7 +27,9 @@ export default class PdfView extends React.Component {
         this.pdfDidLoad = this.pdfDidLoad.bind(this);
         this.checkIfPDFLoaded = this.checkIfPDFLoaded.bind(this);
         this.getPDFLink = this.getPDFLink.bind(this);
-        
+			  this.testPDFLink = this.testPDFLink.bind(this);
+      	this.setLink = this.setLink.bind(this);  
+			
         window.addEventListener("resize", this.checkIfPDFLoaded);
     }
     
@@ -41,13 +43,13 @@ export default class PdfView extends React.Component {
         const linkEnd = "_.pdf";
         
         const date = new Date();
-        let linkDay = date.getDate() - date.getDay() + 2;
+        let linkDay = date.getDate() - date.getDay() + 1;
         let linkMonth = date.getMonth()+1;
         const linkYear = date.getFullYear()-2000;
         
         
         const monthOverlapDate = new Date(linkYear, date.getMonth()+1, 0);
-        console.log(monthOverlapDate)
+        //console.log(monthOverlapDate)
         if(linkDay < 1) {
             linkMonth -= 1;
             linkDay = linkDay += monthOverlapDate.getDate();
@@ -57,12 +59,50 @@ export default class PdfView extends React.Component {
             linkDay = "0"+linkDay;
         }
         
-        const link = linkStart + linkMonth + "-" + linkDay + "-" + linkYear + linkEnd;
-        
-        console.log(linkStart + linkMonth + "-" + linkDay + "-" + linkYear + linkEnd);
-        this.setState({pdfLink: link});
-    }
+				let link = linkStart + linkMonth + "-" + linkDay + "-" + linkYear + linkEnd;	
+				let counter = 1;
+			
+				while(counter < 14) {
+        	
+					this.testPDFLink(link, this.setLink);
+					
+					let day ="";
+					if((linkDay + counter) < 10) {
+						day = "0" + (linkDay+counter);
+					}
+					else {
+						day = (linkDay+counter);
+					}
+					
+					link = linkStart + linkMonth + "-" + day + "-" + linkYear + linkEnd;
+					counter+=1;
+					
+				}
+				
+				
+		}
     
+		setLink(link, isReal) {
+			if(isReal) {
+				this.setState({pdfLink: link});
+			}
+		}								
+										
+		testPDFLink(link, callback) {
+			
+			var urlExists = require('url-exists');
+			let URLReal;
+			urlExists(link, function(err, exists) {
+  				
+					console.log(exists)
+					callback(link, exists);	
+			});
+				
+		
+		}
+	
+		
+	
     checkIfPDFLoaded() {
         
         if(this.state.pdfLoaded === true) {
@@ -138,7 +178,7 @@ export default class PdfView extends React.Component {
                         
                         <CircularProgress size={80} thickness={5} className={this.state.loadingIconClass}/>
           						
-												<h3 className={this.state.errorMessageClass}>Oops! Im having trouble loading the lunch menu. Try viewing it <a href="https://harrisonburg.k12.va.us/District/Department/3-School-Nutrition" target="_blank" className="lunchPDFErrorLink"> Here</a></h3>
+												<h3><a href="https://harrisonburg.k12.va.us/District/Department/3-School-Nutrition" target="_blank" className={this.state.errorMessageClass}>Oops! Im having trouble loading the lunch menu. Try viewing it  <span className="lunchPDFErrorYellowHere">Here</span></a></h3>
 					
                         <div className={this.state.pdfStyle}>
 
