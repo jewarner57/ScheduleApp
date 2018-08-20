@@ -43,7 +43,7 @@ export default class PdfView extends React.Component {
         const linkEnd = "_.pdf";
         
         const date = new Date();
-        let linkDay = date.getDate() - date.getDay() + 1;
+        let linkDay = date.getDate() - date.getDay();
         let linkMonth = date.getMonth()+1;
         const linkYear = date.getFullYear()-2000;
         
@@ -182,7 +182,7 @@ export default class PdfView extends React.Component {
 					
                         <div className={this.state.pdfStyle}>
 
-                            <Document file={this.state.pdfLink} onLoadError = {this.errorLoadingPDF} onLoadSuccess = {this.pdfDidLoad} error="" loading="">
+                            <Document file={this.state.pdfLink} onLoadError = {this.errorLoadingPDF} onLoadSuccess = {this.pdfDidLoad} error="" loading="" noData="">
 
                                 <Page pageNumber={1} width={this.state.screenWidth}/>
 
