@@ -62,7 +62,7 @@ export default class PdfView extends React.Component {
 				let link = linkStart + linkMonth + "-" + linkDay + "-" + linkYear + linkEnd;	
 				let counter = 1;
 			
-				while(counter < 14) {
+				while(counter < 6) {
         	
 					this.testPDFLink(link, this.setLink);
 					
